@@ -11,6 +11,7 @@ import rx.Observable;
 
 /**
  * Created by Rrtoyewx on 16/7/6.
+ * 远程的仓库
  */
 public class RemotoSplashImage implements SplashImage {
 

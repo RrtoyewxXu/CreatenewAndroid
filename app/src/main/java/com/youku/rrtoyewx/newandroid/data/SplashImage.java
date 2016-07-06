@@ -31,7 +31,6 @@ public interface SplashImage {
 
         public SplashImage newInstance(int priority) {
             switch (priority) {
-
                 case DISPLAY_SHOW_LOCAL_IF_HAVE:
                     if(!TextUtils.isEmpty(SharePreferenceManager.getsPreferencesManager(NewAndroidApplication.getApplication()).getLocalSplashImageUrl())){
                         return new LocalSplashImage();

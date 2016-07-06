@@ -6,7 +6,8 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by Rrtoyewx on 16/7/6.
+ * Created by Rrtoyewx on 16/7/6
+ * splash activity 的presenter.
  */
 public class SplashPresenter implements SplashContract.Presenter {
     private SplashContract.View splashView;
@@ -19,11 +20,13 @@ public class SplashPresenter implements SplashContract.Presenter {
     @Override
     public void requestImageUrl() {
         splashImage.getSplashImageBean()
-                .map(splashImageBean -> splashImageBean.getImg())
                 .doOnSubscribe(() -> splashView.loading())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(url -> splashView.displayImage(url)
+                .subscribe(imageBean -> {
+                            splashView.displayImage(imageBean.getImg());
+                            splashImage.saveSplashImageBean(imageBean);
+                        }
                         , throwable -> splashView.showErrorMessage(throwable.getMessage()));
     }
 

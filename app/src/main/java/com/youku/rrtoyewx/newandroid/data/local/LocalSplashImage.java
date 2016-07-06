@@ -9,6 +9,7 @@ import rx.Observable;
 
 /**
  * Created by Rrtoyewx on 16/7/6.
+ * 本地的splasImage的DataManager
  */
 public class LocalSplashImage implements SplashImage {
 
